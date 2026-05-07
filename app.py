@@ -3,6 +3,7 @@ from flask_cors import CORS
 
 from modules.converters.routes import converter_bp
 from modules.todo.routes import todo_bp
+from modules.games.housie.routes import housie_bp
 
 app = Flask(__name__)
 CORS(app)
@@ -10,6 +11,7 @@ CORS(app)
 # register modules
 app.register_blueprint(converter_bp)
 app.register_blueprint(todo_bp)
+app.register_blueprint(housie_bp)
 
 
 if __name__ == "__main__":
