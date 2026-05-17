@@ -7,6 +7,7 @@ from flask import (
 from modules.calculator.financial.simple_interest import (calculate_simple_interest)
 from modules.calculator.financial.compound_interest import (calculate_compound_interest)
 from modules.calculator.financial.emi import (calculate_emi)
+from modules.calculator.general.discount import (calculate_discount)
 
 calculator_bp = Blueprint(
     "calculator",
@@ -52,5 +53,17 @@ def emi():
     data = request.get_json()
 
     result = calculate_emi(data)
+
+    return jsonify(result)
+
+# Discount API
+@calculator_bp.route(
+    "/calculate/discount",
+    methods=["POST"]
+)
+def discount():
+    data = request.get_json()
+
+    result = calculate_discount(data)
 
     return jsonify(result)
